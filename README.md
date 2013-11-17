@@ -9,5 +9,3 @@ assn03 -- Semantic analyzer
 assn04 -- Code generator
 
 Each folder contains implementation details and documentation
-
-(to be continued)
