@@ -1,13 +1,29 @@
-class Main inherits IO{
- x: Int;
- y: String;
- f: Foo;
- main(): Object {{ 
-                   x <- 3; x <- 5; y <- "test"; f <- new Foo;
-                }};
- foo(): String {"test"};
+
+(*
+ *  execute "coolc bad.cl" to see the error messages that the coolc parser
+ *  generates
+ *
+ *  execute "myparser bad.cl" to see the error messages that your parser
+ *  generates
+ *)
+
+(* no error *)
+class A {
 };
-class Foo {
- x:Int <- 3;
-}
+
+(* error:  b is not a type identifier *)
+Class b inherits A {
+};
+
+(* error:  a is not a type identifier *)
+Class C inherits a {
+};
+
+(* error:  keyword inherits is misspelled *)
+Class D inherts A {
+};
+
+(* error:  closing brace is missing *)
+Class E inherits A {
 ;
+

@@ -1,5 +1,4 @@
-class Main inherits IO{
- main(): Object {{ 
-                    let x:Int in x; 
-                }};
+class Test {
+  foo:Test;
+  baz():String { let x:Int in x};
 };

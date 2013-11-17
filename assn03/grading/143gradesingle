@@ -359,7 +359,7 @@ foreach my $caseref (@cases) {
 	    $retval = 0; #if there were errors, the parser returns an
 	    # error value
 	} elsif ( $assignname eq "PA4" ) {
-	    $retval = system("./$executable $TESTS_DIR/$casefile > $testout 2>&1");
+	    $retval = system("$assigndir/$executable $TESTS_DIR/$casefile > $testout 2>&1");
 	    $retval = 0;
 	} elsif ( $assignname eq "PA5" ) {
 	    # modif by Pierre Pont - 12/03/04

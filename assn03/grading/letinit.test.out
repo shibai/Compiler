@@ -1,29 +1,33 @@
-#5
+#4
 _program
-  #5
+  #4
   _class
-    Main
-    IO
+    Test
+    Object
     "letinit.test"
     (
-    #4
+    #2
+    _attr
+      foo
+      Test
+      #2
+      _no_expr
+      : _no_type
+    #3
     _method
-      main
-      Object
-      #4
-      _block
+      baz
+      String
+      #3
+      _let
+        x
+        Int
         #3
-        _let
+        _int
+          5
+        : _no_type
+        #3
+        _object
           x
-          Int
-          #3
-          _int
-            5
-          : Int
-          #3
-          _object
-            x
-          : Int
-        : Int
-      : Int
+        : _no_type
+      : _no_type
     )

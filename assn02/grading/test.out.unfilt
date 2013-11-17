@@ -1,34 +1,30 @@
-#1
-_program
-  #1
-  _class
-    Test
-    Object
-    "./whileoneexpression.test"
-    (
-    #2
-    _attr
-      foo
-      Test
-      #2
-      _no_expr
-      : _no_type
-    #3
-    _method
-      bar
-      Int
-      #3
-      _loop
-        #3
-        _comp
-          #3
-          _bool
-            0
-          : _no_type
-        : _no_type
-        #3
-        _string
-          "Ooga booga"
-        : _no_type
-      : _no_type
-    )
+#name "./wq0607-c4.cool"
+#3 STR_CONST "\\-"
+#3 '-'
+#3 STR_CONST "--"
+#4 STR_CONST "\\"
+#4 STR_CONST "\"--\""
+#4 ERROR "\\"
+#4 '-'
+#4 ERROR "\\"
+#4 STR_CONST ""
+#4 ERROR "\\"
+#4 STR_CONST "--\\"
+#4 ERROR "\\"
+#4 STR_CONST "\\"
+#5 STR_CONST "\\"
+#5 STR_CONST "\"--\""
+#5 ERROR "\\"
+#5 ERROR "\\"
+#5 STR_CONST ""
+#5 ERROR "\\"
+#5 STR_CONST "--\\"
+#5 ERROR "\\"
+#5 STR_CONST "\\"
+#5 STR_CONST "--"
+#5 ERROR "\\"
+#5 STR_CONST "\""
+#5 ERROR "\\"
+#5 ERROR "Unterminated string constant"
+#5 STR_CONST "-\""
+#5 ERROR "\\"

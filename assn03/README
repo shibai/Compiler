@@ -1,63 +1,43 @@
-README file for Programming Assignment 4 (C++ edition)
------------------ Description -----------------------
-cool-tree.h
-Add:
-Symbol class__class::get_parent()
-Symbol class__class::get_name()
-Symbol class__class::get_features()
-
-
-
-
-
-
-
-
-
-
-------------------------------------------------------
-
+README file for Programming Assignment 3 (C++ edition)
 ======================================================
 
 Your directory should now contain the following files:
 
- Makefile		-> [course dir]/assignments/PA4/Makefile
+ Makefile		  -> [course dir]/src/PA3/Makefile
  README
- ast-lex.cc		-> [course dir]/src/PA4/ast-lex.cc
- ast-parse.cc		-> [course dir]/src/PA4/ast-parse.cc
+ cool.y
  bad.cl
- cgen			-> [course dir]/etc/../lib/.i
- cool-tree.cc		-> [course dir]/src/PA4/cool-tree.cc
- cool-tree.h
- cool-tree.handcode.h
- dumptype.cc		-> [course dir]/src/PA4/dumptype.cc
  good.cl
- handle_flags.cc	-> [course dir]/src/PA4/handle_flags.cc
- mycoolc		-> [course dir]/src/PA4/mycoolc
- mysemant		-> [course dir]/src/PA4/mysemant
- semant-phase.cc	-> [course dir]/src/PA4/semant-phase.cc
- semant.cc
- semant.h
- stringtab.cc		-> [course dir]/src/PA4/stringtab.cc
- symtab_example.cc	-> [course dir]/src/PA4/symtab_example.cc
- tree.cc		-> [course dir]/src/PA4/tree.cc
- utilities.cc		-> [course dir]/src/PA4/utilities.cc
+ cool-tree.handcode.h
+ cool-tree.cc		  -> [course dir]/src/PA3/cool-tree.cc
+ cool-tree.aps		  -> [course dir]/src/PA3/cool-tree.aps
+ dumptype.cc		  -> [course dir]/src/PA3/dumptype.cc
+ handle_flags.c           -> [course dir]/src/PA3/handle_flags.cc
+ parser-phase.cc	  -> [course dir]/src/PA3/parser-phase.cc
+ stringtab.cc		  -> [course dir]/src/PA3/stringtab.cc
+ tokens-lex.cc		  -> [course dir]/src/PA3/tokens-lex.cc
+ tree.cc		  -> [course dir]/src/PA3/tree.cc
+ utilities.cc		  -> [course dir]/src/PA3/utilities.cc
  *.d			  dependency files
+ *.*			  other generated files
 
 The include (.h) files for this assignment can be found in 
-[course dir]/include/PA4
+[course dir]/include/PA3
 
 	The Makefile contains targets for compiling and running your
 	program. DO NOT MODIFY.
+    
+	cool.y is the skeleton for the parser specification that you
+	are to write. It already contains productions for the program
+	and the classes. Use them as an example to write the remaining
+	productions.  You should also read the bison documentation.
+	This skeleton will compile and run as is, but it doesn't
+	do much.
 
-	good.cl and bad.cl test a few features of the semantic checker.
-	You should add tests to ensure that good.cl exercises as many
-	legal semantic combinations as possible and that bad.cl
-	exercises as many kinds of semantic errors as possible.
-
-	semant.h contains declarations and definitions for the semantic
-	analyzer.  Place class definitions for the structures you will
-	use here.
+	good.cl, bad.cl test a few features of the grammar. You should
+	add tests to ensure that good.cl exercises every legal
+	construction of the grammar and that bad.cl exercises as many
+	different parsing errors as you can squeeze into one file.
 
 	cool-tree.aps contains the definitions for the tree language
 	which you use to construct the abstract syntax tree (AST).
@@ -66,100 +46,68 @@ The include (.h) files for this assignment can be found in
         C++ functions for producing and consuming the tree nodes.
         This file is provided for your reference.  DO NOT MODIFY.
 
-        tree.{cc|h} contain definitions used by the tree package.  DO
-        NOT MODIFY.
+        tree.{cc|h} contain definitions used by the tree package.
+        cool-tree.handcode.h is the handwritten extension to
+        cool-tree.h.  If you read cool-tree.h and cool-tree.cc, you will
+        note that there are "hooks" for extending the classes
+        declarations.  Extending and modifying the tree package is
+        discussed in the "Cool Tour", but you do not need to (and should
+        not) modify the tree package for this assignment.
 
-        cool-tree.h, and cool-tree.handcode.h specify and give an
-        implementation of Cool ASTs (see the README for PA3 and the
-        "Cool Tour").  In this assignment, you will need to add
-        functions to the AST classes to store, fetch, and compute
-        information about the AST.  Note that cool-tree.handcode.h
-        differs slightly from the file supplied for PA3.
+	tokens-lex.cc is a lexer capable of reading a token stream from
+	console in the format produced by the lexer phase. DO NOT
+	MODIFY.
 
-   	You should NOT remove any definitions that are already present
-	in cool-tree.h and cool-tree.handcode.h.  These functions and
-	data members are required for the system to function properly.
+        parser-phase.cc contains a driver to test the parser. DO NOT
+        MODIFY.
 
-        You should add any fields and methods to the classes you need to 
-	perform semantic analysis.  You	will need to add, for example, 
-	methods which traverse the expressions of the tree and implement 
-	the type-checking rules.
+	dumptype.cc prints the AST out in a form readable by the
+	semant phase of the compiler. DO NOT MODIFY.
 
-	cool-tree.cc contains definitions of the provided methods,
-	and instantiations of the template for the list handling functions.
-	You should not modify this file, but place definitions of all
-	methods you add to cool-tree.h or cool-tree.handcode.h in semant.cc.
-	DO NOT MODIFY cool-tree.cc
+	handle_flags.cc implements routines for parsing command line
+        flags. DO NOT MODIFY.
 
-	semant.cc is the file in which you should write your semantic
-	analyzer.  The main() procedure calls the method `semant'
-	on `ast_root', the root of the abstract syntax tree generated by
-	the parser.  There are methods supplied that you should use to report 
-	errors. You are relatively free in how you decide to structure the 
-	semantic checker, but don't modify the error printing routines.
+        The rest of the files are created as byproducts of `bison'.
+        `cool-parse.cc' is the generated C++ file containing the
+        parser.
 
-	ast-lex.cc and ast-parse.cc implement a lexer and a parser for
-	reading text representation of ASTs from console in the format
-	produced by the parser phase. DO NOT MODIFY.
-
-	semant-phase.cc contains a test driver for semantic analysis.
-	The main program reads an AST in text form from standard input,
-	parses it, and then produces a type-annotated AST on standard
-	output.  The script mycoolc can pass any of the standard flags
-	to the semantic analyzer as well; for this assignment, -s
-	(semantic analysis debug) may be useful as it sets a global
-	variable semant_debug to true (1).  If you want your semantic
-	checker to print debug information when the option is set, write
-	your debug code in the following format:
-
-	      if (semant_debug)
-	      {
-		...
-	      }
-
-	semant_debug is provided as a convenience. You don't need to use
-	the debugging flags if you don't want to. DON'T MODIFY
-	semant-phase.cc
-
-	symtab.h contains a symbol table implementation. Read the
-	comments in the file, the "Cool Tour", and look at the example
-	in symtab_example.cc.  You are not required to use this code,
-	but you may find it useful. DO NOT MODIFY.
+	Files not discussed are covered in the README for PA2.
 
 Instructions
 ------------
 
-	To compile the example use of the symbol table, type
+	To compile your parser program type:
 
-	% make symtab_example
-        % ./symtab_example
+	% make parser
 
-	To compile your semantic analyzer program type:
+	This produces an executable named "parser" which is standalone
+	phase of the Cool compiler.  It requires lexer, semant, and cgen
+	to do anything useful.
 
-	% make semant
+	To test your parser on a file 'foo.cl' type
 
-	To test your semantic checker, type:
+	% myparser foo.cl
 
-        % ./mysemant good.cl
+	myparser is a shell script that "glues" together lexer and
+	parser using pipes.
 
-	mysemant is a version of mycoolc that omits code generation.
-	mysemant parses all the cool files given on the command line and
-	builds a single abstract syntax tree containing all class
-	definitions appearing in the input files. Your semantic checker
-	is then called on this abstract syntax tree.  If there are no
-	errors, the program produces a type-annotated abstract syntax
-	tree as output.
-
-	To run your checker on the files good.cl and bad.cl type:
+	To run your parser on the files good.cl and bad.cl type:
 
 	% make dotest
 
-	If you think your semantic checker is correct and behaves like
-	the one we wrote, you can try to run mycoolc using your checker,
-	your parser and also your lexical analyzer if you choose (see
-	below for instructions).  Remember if your lexer, parser or
-	checker behaves in an unexpected manner, you may get errors
-	anywhere.
+	To run the (provided) lexer and your parser on a file called test.cl type:
+
+	% ./lexer test.cl | ./parser
+
+	If you think your parser is correct and behaves like
+	the one we wrote, you may want to run a COOL compiler using
+	your parser:
+
+	% mycoolc foo.cl
+
+	To overwrite the default lexical analyzer with yours, replace 
+	lexer (which is a symbolic link to the "official" lexer) with
+        your lexer from PA2.
 
 
         Instructions for turning in the assignment will be posted on the

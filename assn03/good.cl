@@ -1,7 +1,11 @@
-class Main { 
+class A {
+f():Int{{
+-- valid
+while 1 loop 1 pool;
+while 1 loop while 2 loop 2 pool pool;
 
-  main() : Bool {
-    if (1) then true fi
-  }; 
-
+-- not valid
+while 1 loop 1 loop;
+while 1 pool 1 pool;
+}};
 };

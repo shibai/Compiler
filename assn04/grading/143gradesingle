@@ -366,14 +366,14 @@ foreach my $caseref (@cases) {
 	    # if the case name contains "-gc", run coolc with Garbage Collection enabled
 	    if ($casefile =~ m/-gc/) {
 		print "[GC Test Case: $casefile]\n";
-		$retval = system("./$executable $addedflags -g -o $casefile.s $TESTS_DIR/$casefile");
+		$retval = system("$assigndir/$executable $addedflags -g -o $casefile.s $TESTS_DIR/$casefile");
 	    } else {
-		$retval = system("./$executable $addedflags -o $casefile.s $TESTS_DIR/$casefile");
+		$retval = system("$assigndir/$executable $addedflags -o $casefile.s $TESTS_DIR/$casefile");
 	    } 
 	    if (($retval != 0)) {
 		system("mv $casefile.s $testout");
 	    } else {
-		$retval = system("/usr/class/cs143/bin/spim -file $casefile.s > $testout 2>&1");
+		$retval = system("$BIN_DIR/spim -file $casefile.s > $testout 2>&1");
 		# system("rm $casefile.s");
 	    }
 	} elsif ( $assignname eq "PAX1" ) {

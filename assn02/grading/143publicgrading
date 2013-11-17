@@ -3,7 +3,7 @@
 ADMIN_DIR=.
 COMMENTS_FILE="RESULTS"
 SCORE_FILE="SCORE"
-MAX_SCORE=70
+MAX_SCORE=63
 
 if [ $# != 1 ]; then
     echo "Usage: $0 assignment_name"
